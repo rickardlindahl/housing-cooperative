@@ -9,6 +9,9 @@ export default defineType({
       name: "name",
       title: "Name",
       type: "string",
+      validation: (rule) => rule.required(),
+      // @ts-ignore
+      codegen: { required: true },
     }),
     defineField({
       name: "slug",
@@ -18,11 +21,17 @@ export default defineType({
         source: "name",
         maxLength: 96,
       },
+      validation: (rule) => rule.required(),
+      // @ts-ignore
+      codegen: { required: true },
     }),
     defineField({
       name: "email",
       title: "Email",
       type: "string",
+      validation: (rule) => rule.required(),
+      // @ts-ignore
+      codegen: { required: true },
     }),
     defineField({
       name: "image",
