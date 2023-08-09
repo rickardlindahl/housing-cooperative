@@ -1,0 +1,15 @@
+{
+  "extends": "tsconfig/base.json",
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "noEmit": true,
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "incremental": true
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

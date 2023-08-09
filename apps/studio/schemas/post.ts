@@ -10,8 +10,6 @@ export default defineType({
       title: "Title",
       type: "string",
       validation: (rule) => rule.required(),
-      // @ts-ignore
-      codegen: { required: true },
     }),
     defineField({
       name: "slug",
@@ -22,8 +20,6 @@ export default defineType({
         maxLength: 96,
       },
       validation: (rule) => rule.required(),
-      // @ts-ignore
-      codegen: { required: true },
     }),
     defineField({
       name: "author",
@@ -31,8 +27,6 @@ export default defineType({
       type: "reference",
       to: { type: "author" },
       validation: (rule) => rule.required(),
-      // @ts-ignore
-      codegen: { required: true },
     }),
     defineField({
       name: "mainImage",
@@ -53,16 +47,12 @@ export default defineType({
       title: "Published at",
       type: "datetime",
       validation: (rule) => rule.required(),
-      // @ts-ignore
-      codegen: { required: true },
     }),
     defineField({
       name: "body",
       title: "Body",
       type: "blockContent",
       validation: (rule) => rule.required(),
-      // @ts-ignore
-      codegen: { required: true },
     }),
   ],
 
