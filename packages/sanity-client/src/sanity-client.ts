@@ -33,7 +33,7 @@ export function createClient({ projectId, dataset, ...rest }: ClientConfig) {
   });
 
   const runQuery = makeSafeQueryRunner((query: string, params: Params = {}) =>
-    client.fetch(query, params)
+    client.fetch(query, params),
   );
 
   async function getPosts() {
@@ -41,7 +41,7 @@ export function createClient({ projectId, dataset, ...rest }: ClientConfig) {
       q("*", { isArray: true })
         .filter("_type == 'post' && defined(slug.current)")
         .grab(postSelection)
-        .order("_createdAt desc")
+        .order("_createdAt desc"),
     );
   }
 
@@ -49,11 +49,11 @@ export function createClient({ projectId, dataset, ...rest }: ClientConfig) {
     return runQuery(
       q("*")
         .filter(
-          "_type == 'post' && defined(slug.current) && slug.current == $slug"
+          "_type == 'post' && defined(slug.current) && slug.current == $slug",
         )
         .grab(postSelection)
         .slice(0),
-      { slug }
+      { slug },
     );
   }
 
