@@ -2,6 +2,10 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "db:push": "turbo run db:push --filter db",
+    "db:studio": "turbo run db:studio --filter db",
+    "db:introspect": "turbo run db:introspect --filter db",
+    "db:generate": "turbo run db:generate --filter db",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore"

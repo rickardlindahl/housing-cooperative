@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1691678140571,
+      "tag": "0000_jittery_magik",
+      "breakpoints": true
+    }
+  ]
+}
