@@ -3,7 +3,7 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
   darkMode: ["class"],
-  content: ["./src/app/**/*.{ts,tsx}", "./src/components/**/*.{ts,tsx}"],
+  content: [""],
   theme: {
     container: {
       center: true,
@@ -73,5 +73,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config;

@@ -1,3 +1,5 @@
+import "@hc/ui/src/globals.css";
+
 export default function RootLayout({
   children,
 }: {

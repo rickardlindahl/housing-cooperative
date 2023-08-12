@@ -1,4 +1,4 @@
-import { Button, Header } from "ui";
+import { Button, Header } from "@hc/ui";
 
 export default function Page() {
   return (
