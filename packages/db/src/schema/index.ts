@@ -1,6 +1,7 @@
 import type { AdapterAccount } from "@auth/core/adapters";
 import {
   int,
+  mysqlEnum,
   mysqlTable,
   primaryKey,
   timestamp,
@@ -16,6 +17,9 @@ export const user = mysqlTable("user", {
     fsp: 3,
   }).defaultNow(),
   image: varchar("image", { length: 255 }),
+  role: mysqlEnum("role", ["admin", "editor", "user"])
+    .default("user")
+    .notNull(),
 });
 
 export const account = mysqlTable(
