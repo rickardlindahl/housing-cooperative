@@ -17,6 +17,7 @@ export const env = createEnv({
       // VERCEL_URL doesn't include `https` so it cant be validated as a URL
       process.env.VERCEL ? z.string().min(1) : z.string().url(),
     ),
+    NODE_ENV: z.enum(["development", "production", "test"]),
   },
   runtimeEnv: process.env,
 });

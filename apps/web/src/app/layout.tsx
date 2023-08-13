@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import { cn } from "@hc/ui";
 
 import { NextAuthProvider } from "~/components/next-auth-provider";
+import { TailwindIndicator } from "~/components/tailwind-indicator";
 import { ThemeProvider } from "~/components/theme-provider";
 import { metadata as siteMetadata } from "~/settings";
 
@@ -40,6 +41,7 @@ export default function RootLayout({
             {children}
           </ThemeProvider>
         </NextAuthProvider>
+        <TailwindIndicator />
       </body>
     </html>
   );
