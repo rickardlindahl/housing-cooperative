@@ -113,8 +113,8 @@ importers:
   apps/web:
     dependencies:
       '@auth/drizzle-adapter':
-        specifier: ^0.2.1
-        version: 0.2.1
+        specifier: ^0.3.1
+        version: 0.3.1
       '@hc/db':
         specifier: workspace:*
         version: link:../../packages/db
@@ -133,6 +133,9 @@ importers:
       next-auth:
         specifier: ^4.22.5
         version: 4.22.5(next@13.4.1)(react-dom@18.2.0)(react@18.2.0)
+      next-themes:
+        specifier: ^0.2.1
+        version: 0.2.1(next@13.4.1)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -308,22 +311,6 @@ packages:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.19
 
-  /@auth/core@0.10.1:
-    resolution: {integrity: sha512-zTE9cMRaAeTHvB78nRMovXW0D6ZnT3ldoGU+2PD5YAC+1G591LdOc4qjVaCyg5vmGjcTlHOpB4ApzyXXQkS1dA==}
-    peerDependencies:
-      nodemailer: ^6.8.0
-    peerDependenciesMeta:
-      nodemailer:
-        optional: true
-    dependencies:
-      '@panva/hkdf': 1.1.1
-      cookie: 0.5.0
-      jose: 4.14.4
-      oauth4webapi: 2.3.0
-      preact: 10.11.3
-      preact-render-to-string: 5.2.3(preact@10.11.3)
-    dev: false
-
   /@auth/core@0.10.2:
     resolution: {integrity: sha512-fe6nwrZTZFSoPf82gXxWQY9EkEv6rgsPjYs+WM1Gpgqfi+eNsXdYEJV57mnF30hIyWlPcxyC/KjGLcYw+G/KXw==}
     peerDependencies:
@@ -340,10 +327,26 @@ packages:
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: false
 
-  /@auth/drizzle-adapter@0.2.1:
-    resolution: {integrity: sha512-RGIiFGTrmWYYNeGw2KUX1WyTtsUNjSevSTf2c+3bdoUT73sfvarHaxLZ3qdI/+UyEdQVMiNkescU8fLqqQCOVg==}
+  /@auth/core@0.11.1:
+    resolution: {integrity: sha512-PzvebszgJ4NpQNz8Fsjn39oEY8MzULKppr7Um7DX/HLrS3zthgLY0yAnwkA+2/kxwAb36dIkX+C72q6TziiTaA==}
+    peerDependencies:
+      nodemailer: ^6.8.0
+    peerDependenciesMeta:
+      nodemailer:
+        optional: true
     dependencies:
-      '@auth/core': 0.10.1
+      '@panva/hkdf': 1.1.1
+      cookie: 0.5.0
+      jose: 4.14.4
+      oauth4webapi: 2.3.0
+      preact: 10.11.3
+      preact-render-to-string: 5.2.3(preact@10.11.3)
+    dev: false
+
+  /@auth/drizzle-adapter@0.3.1:
+    resolution: {integrity: sha512-zSuewnrozY0EZYVrt2T5VY0R+wA3chXncanmUgvAgoX+pcussKMVFmnSrSYuc3i4vfM2qCmAa6S6dkSH5RViSA==}
+    dependencies:
+      '@auth/core': 0.11.1
     transitivePeerDependencies:
       - nodemailer
     dev: false
@@ -5508,6 +5511,18 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       uuid: 8.3.2
+    dev: false
+
+  /next-themes@0.2.1(next@13.4.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==}
+    peerDependencies:
+      next: '*'
+      react: '*'
+      react-dom: '*'
+    dependencies:
+      next: 13.4.1(@babel/core@7.22.10)(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /next-tick@1.1.0:
