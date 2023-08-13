@@ -1,4 +1,4 @@
-import "@hc/ui/src/globals.css";
+import "@hc/ui/src/styles/globals.css";
 
 import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
@@ -18,8 +18,8 @@ const fontHeading = localFont({
 });
 
 export const metadata = {
-  title: "Salen Samfällighetsförening",
-  description: "Salen Samfällighetsförening, Tomtebo Umeå",
+  title: "Housing Cooperative",
+  description: "Housing Cooperative, located somewhere on earth.",
 };
 
 export default function RootLayout({
