@@ -6,6 +6,7 @@ import { cn } from "@hc/ui";
 
 import { NextAuthProvider } from "~/components/next-auth-provider";
 import { ThemeProvider } from "~/components/theme-provider";
+import { metadata as siteMetadata } from "~/settings";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -17,10 +18,7 @@ const fontHeading = localFont({
   variable: "--font-heading",
 });
 
-export const metadata = {
-  title: "Housing Cooperative",
-  description: "Housing Cooperative, located somewhere on earth.",
-};
+export const metadata = siteMetadata;
 
 export default function RootLayout({
   children,
