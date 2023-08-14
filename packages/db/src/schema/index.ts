@@ -9,6 +9,9 @@ import {
   varchar,
 } from "drizzle-orm/mysql-core";
 
+export const roles = ["admin", "editor", "user"] as const;
+export type Role = (typeof roles)[number];
+
 export const user = mysqlTable("user", {
   id: varchar("id", { length: 255 }).notNull().primaryKey(),
   name: varchar("name", { length: 255 }),
@@ -18,9 +21,7 @@ export const user = mysqlTable("user", {
     fsp: 3,
   }).defaultNow(),
   image: varchar("image", { length: 255 }),
-  role: mysqlEnum("role", ["admin", "editor", "user"])
-    .default("user")
-    .notNull(),
+  role: mysqlEnum("role", roles).default("user").notNull(),
   password: text("password"),
 });
 
