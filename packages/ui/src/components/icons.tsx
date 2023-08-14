@@ -1,6 +1,7 @@
 import {
   Command,
   Loader2,
+  LogOutIcon,
   Menu,
   Moon,
   SunMedium,
@@ -14,6 +15,7 @@ export type Icon = LucideIcon;
 export const Icons = {
   close: X,
   logo: Command,
+  logout: LogOutIcon,
   menu: Menu,
   moon: Moon,
   spinner: Loader2,
