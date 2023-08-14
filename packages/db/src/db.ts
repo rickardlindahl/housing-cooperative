@@ -1,5 +1,5 @@
 import { Config, connect } from "@planetscale/database";
-import { Logger } from "drizzle-orm";
+import { eq, Logger } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/planetscale-serverless";
 
 import * as schema from "./schema";
@@ -23,4 +23,17 @@ class DatabaseLogger implements Logger {
   logQuery(query: string, params: unknown[]) {
     console.log({ query, params });
   }
+}
+
+export async function getUserByEmail(
+  db: ReturnType<typeof createDatabase>,
+  email: string,
+) {
+  const user = await db
+    .select()
+    .from(schema.user)
+    .where(eq(schema.user.email, email))
+    .limit(1);
+
+  return user[0];
 }

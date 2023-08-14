@@ -14,6 +14,7 @@
     "@hc/db": "workspace:*",
     "@hc/ui": "workspace:*",
     "@t3-oss/env-core": "^0.6.0",
+    "argon2": "^0.31.0",
     "env-core": "@t3-oss/env-core",
     "next": "^13.4.1",
     "next-auth": "^4.22.5",
