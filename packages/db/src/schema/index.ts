@@ -4,6 +4,7 @@ import {
   mysqlEnum,
   mysqlTable,
   primaryKey,
+  text,
   timestamp,
   varchar,
 } from "drizzle-orm/mysql-core";
@@ -20,6 +21,7 @@ export const user = mysqlTable("user", {
   role: mysqlEnum("role", ["admin", "editor", "user"])
     .default("user")
     .notNull(),
+  password: text("password"),
 });
 
 export const account = mysqlTable(

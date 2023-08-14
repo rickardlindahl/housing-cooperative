@@ -15,6 +15,13 @@
       "when": 1691833537311,
       "tag": "0001_wakeful_mordo",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1692013853748,
+      "tag": "0002_damp_molten_man",
+      "breakpoints": true
     }
   ]
 }
