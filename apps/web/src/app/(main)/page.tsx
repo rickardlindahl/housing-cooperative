@@ -1,7 +1,12 @@
+import { getServerSession } from "next-auth";
+
 import { SignInButton } from "~/components/sign-in-button";
+import { authOptions } from "~/lib/auth";
 import { metadata } from "~/settings";
 
 export default async function IndexPage() {
+  const session = await getServerSession(authOptions);
+
   return (
     <>
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
@@ -13,7 +18,7 @@ export default async function IndexPage() {
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
             {metadata.description}
           </p>
-          <SignInButton />
+          {!session && <SignInButton />}
         </div>
       </section>
     </>
