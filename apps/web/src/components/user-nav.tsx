@@ -35,7 +35,8 @@ export const UserNav = ({ user }: UserNavProps) => {
               {user.name
                 ?.split(" ")
                 .map((str) => str[0].toUpperCase())
-                .join("")}
+                .join("")
+                .slice(0, 2)}
             </AvatarFallback>
           </Avatar>
         </Button>
