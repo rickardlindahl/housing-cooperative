@@ -1,24 +1,18 @@
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { getUserByEmail } from "@hc/db";
-import { hash, verify } from "argon2";
+import { verify } from "argon2";
 import { type NextAuthOptions } from "next-auth";
 import { type Adapter } from "next-auth/adapters";
 import Credentials from "next-auth/providers/credentials";
-import * as z from "zod";
 
+import { loginSchema } from "./auth/schema";
 import { db } from "./db";
-
-export const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(4),
-});
 
 export const authOptions: NextAuthOptions = {
   adapter: DrizzleAdapter(db) as Adapter,
   session: {
     strategy: "jwt",
   },
-
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
@@ -26,6 +20,9 @@ export const authOptions: NextAuthOptions = {
       }
       return token;
     },
+  },
+  pages: {
+    signIn: "/auth/signin",
   },
   providers: [
     Credentials({
@@ -45,6 +42,7 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         const { email, password } = await loginSchema.parseAsync(credentials);
+        console.log("authorize", email, password);
 
         const user = await getUserByEmail(db, email);
 
