@@ -1,5 +1,8 @@
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
 
+import { authOptions } from "~/lib/auth";
 import { UserAuthForm } from "./components/user-auth-form";
 
 export const metadata: Metadata = {
@@ -7,7 +10,24 @@ export const metadata: Metadata = {
   description: "Sign in using your credentials.",
 };
 
-export default function AuthenticationPage() {
+function getCallbackUrl(searchParams: {
+  [key: string]: string | string[] | undefined;
+}) {
+  const callbackUrl = searchParams.callbackUrl ?? "/";
+  return typeof callbackUrl === "string" ? callbackUrl : callbackUrl[0];
+}
+
+export default async function AuthenticationPage({
+  searchParams,
+}: {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const session = await getServerSession(authOptions);
+  if (session) {
+    redirect(getCallbackUrl(searchParams));
+  }
+
   return (
     <div className="container relative hidden h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
       <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
