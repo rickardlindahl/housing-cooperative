@@ -25,6 +25,8 @@ interface UserNavProps {
 }
 
 export const UserNav = ({ user }: UserNavProps) => {
+  const router = useRouter();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -63,6 +65,14 @@ export const UserNav = ({ user }: UserNavProps) => {
           <DropdownMenuItem>
             Settings
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              router.push("/admin");
+            }}
+          >
+            Admin
+            <DropdownMenuShortcut>⌘A</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
