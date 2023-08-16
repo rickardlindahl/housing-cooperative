@@ -3,6 +3,7 @@ import "@hc/ui/src/styles/globals.css";
 import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
 import { cn } from "@hc/ui";
+import { Toaster } from "@hc/ui/src/components/ui/toaster";
 
 import { NextAuthProvider } from "~/components/next-auth-provider";
 import { TailwindIndicator } from "~/components/tailwind-indicator";
@@ -41,6 +42,7 @@ export default function RootLayout({
             {children}
           </ThemeProvider>
         </NextAuthProvider>
+        <Toaster />
         <TailwindIndicator />
       </body>
     </html>
