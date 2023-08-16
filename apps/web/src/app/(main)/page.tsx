@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 
 import { SignInButton } from "~/components/sign-in-button";
+import { ToastCodeListener } from "~/components/toast-code-listener";
 import { authOptions } from "~/lib/auth";
 import { metadata } from "~/settings";
 
@@ -21,6 +22,7 @@ export default async function IndexPage() {
           {!session && <SignInButton />}
         </div>
       </section>
+      <ToastCodeListener />
     </>
   );
 }

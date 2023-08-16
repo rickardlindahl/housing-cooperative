@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { withAuth } from "next-auth/middleware";
 
+import { AUTH_ADMIN_ROLE_REQUIRED } from "./lib/code";
+
 export const config = { matcher: ["/admin"] };
 
 export default withAuth(
@@ -9,7 +11,9 @@ export default withAuth(
       req.nextUrl.pathname.startsWith("/admin") &&
       req.nextauth.token.role !== "admin"
     ) {
-      return NextResponse.redirect(new URL("/", req.url));
+      const url = new URL("/", req.url);
+      url.searchParams.append("code", AUTH_ADMIN_ROLE_REQUIRED);
+      return NextResponse.redirect(url);
     }
   },
   {
