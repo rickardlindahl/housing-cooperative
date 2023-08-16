@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@hc/ui/src/components/ui/button";
 import { Input } from "@hc/ui/src/components/ui/input";
 import { Label } from "@hc/ui/src/components/ui/label";
+import { useToast } from "@hc/ui/src/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -19,20 +19,23 @@ export function UserAuthForm() {
   } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
   });
-  const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast();
   const router = useRouter();
 
   const onSubmit: SubmitHandler<LoginSchema> = async (credentials) => {
-    setError(null);
-
     const response = await signIn("credentials", {
       redirect: false,
       ...credentials,
     });
 
     if (!response.ok) {
-      setError(response.error ?? "Something went wrong. Please try again");
-      return;
+      return toast({
+        title: "Uh oh! Something went wrong.",
+        description:
+          response.error ??
+          "There was a problem signing in. Please check your credentials and try again.",
+        variant: "destructive",
+      });
     }
 
     router.push(
@@ -86,7 +89,6 @@ export function UserAuthForm() {
           </div>
           <Button type="submit">Sign in</Button>
         </div>
-        {error && <p className="mt-2 text-xs italic text-red-500">{error}</p>}
       </form>
     </div>
   );
